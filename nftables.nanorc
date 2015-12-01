@@ -1,27 +1,27 @@
 syntax "nftables" "\.(nft|nftables)$"
-header "^#!.*((nft|nftables))"
-
-# Strings and others
-color yellow ""(\\.|[^"])*"" "'(\\.|[^'])*'"
-color green "[{}():;|`$<>!=&\\]" "(\]|\[)"
+header "^#!.*(nft|nftables)"
 
 # Objects and operations
-color green "\<(table|chain|ruleset|set|map|vmap|type|hook|priority|policy)\>[[:space:]]"
-color green "\<(include|define)\>[[:space:]]"
-color red "[[:space:]]\<(flush|add|remove|replace|delete|insert)\>[[:space:]]"
+color green "\<(table|chain|ruleset|set|map|vmap|type|hook|priority|policy)\>"
+color green "\<(include|define)\>"
+color red "\<(flush|add|remove|replace|delete|insert)\>"
 
 # Families
-color yellow "[[:space:]]\<(ip|ip6|inet|arp|bridge)\>[[:space:]]"
+color yellow "\<(ip|ip6|inet|arp|bridge)\>"
 
 # Terminal statements
 color red "\<(drop|reject)\>"
 color brightblue "\<(accept|snat|dnat|masquerade|continue|return|goto|jump)\>"
-
-# Basic variable names
-color brightred "\$[[:alpha:]_][[:alnum:]_.]*"
 
 # Comments
 color cyan "(^|[[:space:]])#.*$"
 
 # Trailing whitespace
 color ,green "[[:space:]]+$"
+
+# Strings and others
+color yellow ""(\\.|[^"])*"" "'(\\.|[^'])*'"
+color green "[{}():;|`$<>!=&\\]" "(\]|\[)"
+
+# Basic variable names
+color brightred "\$[[:alpha:]_][[:alnum:]_.]*"
