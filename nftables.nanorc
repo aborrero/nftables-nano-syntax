@@ -1,17 +1,19 @@
+# Here is an example for nftables.
+
 syntax "nftables" "\.(nft|nftables)$"
 header "^#!.*(nft|nftables)"
 
 # Objects and operations
-color green "\<(table|chain|ruleset|set|map|vmap|type|hook|priority|policy)\>"
-color green "\<(include|define)\>"
-color red "\<(flush|add|remove|replace|delete|insert)\>"
+color green "\<(chain|hook|policy|priority|ruleset|set|table|type|v?map)\>"
+color green "\<(define|include)\>"
+color red "\<(add|delete|flush|insert|remove|replace)\>"
 
 # Families
-color yellow "\<(ip|ip6|inet|arp|bridge)\>"
+color yellow "\<(arp|bridge|inet|ip6?)\>"
 
 # Terminal statements
 color red "\<(drop|reject)\>"
-color brightblue "\<(accept|snat|dnat|masquerade|continue|return|goto|jump)\>"
+color brightblue "\<(accept|continue|(d|s)nat|goto|jump|masquerade|return)\>"
 
 # Comments
 color cyan "(^|[[:space:]])#.*$"
