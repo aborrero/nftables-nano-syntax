@@ -1,7 +1,8 @@
-# Here is an example for nftables.
+## Here is an example for nftables.
 
 syntax "nftables" "\.(nft|nftables)$"
 header "^#!.*(nft|nftables)"
+comment "#"
 
 # Objects and operations
 color green "\<(chain|hook|policy|priority|ruleset|set|table|type|v?map)\>"
@@ -9,7 +10,7 @@ color green "\<(define|include)\>"
 color red "\<(add|delete|flush|insert|remove|replace)\>"
 
 # Families
-color yellow "\<(arp|bridge|inet|ip6?)\>"
+color yellow "\<(arp|bridge|inet|netdev|ingress|ip6?)\>"
 
 # Terminal statements
 color red "\<(drop|reject)\>"
@@ -26,4 +27,5 @@ color yellow ""(\\.|[^"])*"" "'(\\.|[^'])*'"
 color green "[{}():;|`$<>!=&\\]" "(\]|\[)"
 
 # Basic variable names
-color brightred "\$[[:alpha:]_][[:alnum:]_.]*"
+color brightred "\$[[:alpha:]_-][[:alnum:]_.-]*"
+color brightred "\@[[:alpha:]_-][[:alnum:]_.-]*"
